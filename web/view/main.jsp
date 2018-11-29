@@ -137,7 +137,7 @@
 		                    <li class="active"><a href="main.mc">Home</a></li>
 		                    <li><a href="shop.mc">Shop</a></li>
 		                    <li><a href="product_details.mc">Product</a></li>
-		                    <li><a href="cart.mc">Cart</a></li>
+		                    <li><a href="cart.mc">Shopping Cart</a></li>
 		                    <li><a href="checkout.mc">Checkout</a></li>
 		                </ul>
 		            </nav>
@@ -262,7 +262,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		                                            <a class="nav-link" href="product_details.mc">Product</a>
 		                                        </li>
 		                                        <li class="nav-item">
-		                                            <a class="nav-link" href="cart.mc">Cart</a>
+		                                            <a class="nav-link" href="cart.mc">Shopping Cart</a>
 		                                        </li>
 		                                        <li class="nav-item">
 		                                            <a class="nav-link" href="checkout.mc">Checkout</a>

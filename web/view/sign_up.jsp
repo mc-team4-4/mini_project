@@ -47,7 +47,7 @@
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter E-mail">
 						<input class="input100" type="text" name="E-mail" placeholder="E-mail">
-						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+						<span class="focus-input100" data-placeholder="&#x2709;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter Password">
@@ -62,15 +62,20 @@
 					
 					<div class="wrap-input100 validate-input" data-validate="Enter Name">
 						<input class="input100" type="text" name="name" placeholder="Name">
-						<span class="focus-input100" data-placeholder="&#xf191;"></span>
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter Phone Number">
 						<input class="input100" type="text" name="phone_number" placeholder="Phone Number">
-						<span class="focus-input100" data-placeholder="&#xf191;"></span>
+						
+						<span class="focus-input100" data-placeholder="&#x2706;"></span>
 					</div>
 
-
+					<div class="wrap-input100 validate-input" data-validate="Enter Address">
+						<input class="input100" type="text" name="address" placeholder="Address">
+						<span class="focus-input100" data-placeholder="&#x1F3E0;"></span>
+					</div>
+					
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn" style="margin-right: 50px">Register</button>
 					</div>
