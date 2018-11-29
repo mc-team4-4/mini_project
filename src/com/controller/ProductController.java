@@ -29,7 +29,8 @@ public class ProductController {
 	@RequestMapping("/product_details.mc")
 	public ModelAndView product_details() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("product_details");
+		mv.setViewName("main");
+		mv.addObject("center", "product_details");
 		return mv;
 	}
 }

@@ -34,6 +34,8 @@
 </head>
 <body>
 	
+				
+				
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('img/bg-01.jpg');">
 			<div class="wrap-login100">
@@ -82,7 +84,11 @@
 	</div>
 	
 
-	<div id="dropDownSelect1"></div>
+
+	
+	
+	
+
 	
 <!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>

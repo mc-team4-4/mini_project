@@ -1,10 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<style>
+
+
+</style>
+
+
 
 <head>
     <meta charset="UTF-8">
@@ -29,6 +39,7 @@
 </head>
 
 <body>
+
     <!-- Search Wrapper Area Start -->
     <div class="search-wrapper section-padding-100">
         <div class="search-close">
@@ -60,7 +71,7 @@
             </div>
             
              <div class="main_sign_button">
-	  			<a href="sign_in.mc" data-title="Sign in" id="sign"  data-modal="#modal" class="modal__trigger"></a>
+	  			<a href="sign_in.mc" data-title="Sign in" id="sign"></a>
 			</div>
 			
             <!-- Navbar Toggler -->
@@ -71,41 +82,78 @@
 
         <!-- Header Area Start -->
         <header class="header-area clearfix">
-            <!-- Close Icon -->
-            <div class="nav-close">
-                <i class="fa fa-close" aria-hidden="true"></i>
-            </div>
-            <!-- Logo -->
-            <div class="logo">
-                <a href="main.mc"><img src="img/core-img/logo.png" alt=""></a>
-            </div>
-            
-            
-            <div class="main_sign_button">
-	  			<a href="sign_in.mc" data-title="Sign in" id="sign"></a>			
-			</div>
-            
-            <!-- Amado Nav -->
-            <nav class="amado-nav">
-                <ul>
-                    <li class="active"><a href="main.mc">Home</a></li>
-                    <li><a href="shop.mc">Shop</a></li>
-                    <li><a href="product_details.mc">Product</a></li>
-                    <li><a href="cart.mc">Cart</a></li>
-                    <li><a href="checkout.mc">Checkout</a></li>
-                </ul>
-            </nav>
-            <!-- Button Group -->
-            <div class="amado-btn-group mt-30 mb-100">
-                <a href="#" class="btn amado-btn mb-15">Discount</a>
-                <a href="#" class="btn amado-btn active">New this week</a>
-            </div>
-            <!-- Cart Menu -->
-            <div class="cart-fav-search mb-100">
-                <a href="cart.mc" class="cart-nav"><img src="img/core-img/cart.png" alt=""> Cart <span>(0)</span></a>
-                <a href="#" class="fav-nav"><img src="img/core-img/favorites.png" alt=""> Favourite</a>
-                <a href="#" class="search-nav"><img src="img/core-img/search.png" alt=""> Search</a>
-            </div>
+        
+        	<c:choose>
+				<c:when test="${login_cust == null }">
+   
+		            <!-- Close Icon -->
+		            <div class="nav-close">
+		                <i class="fa fa-close" aria-hidden="true"></i>
+		            </div>
+		            <!-- Logo -->
+		            <div class="logo">
+		                <a href="main.mc"><img src="img/core-img/logo.png" alt=""></a>
+		            </div>
+		            
+		            
+		            <div class="main_sign_button">
+			  			<a href="sign_in.mc" data-title="Sign in" id="sign"></a>			
+					</div>
+		            
+		            
+		            <!-- Amado Nav -->
+		            <nav class="amado-nav" style="margin-bottom: 30px">
+		                <ul>
+		                    <li class="active"><a href="main.mc">Home</a></li>
+		                    <li><a href="shop.mc">Shop</a></li>
+		                    <li><a href="product_details.mc">Product</a></li>
+		                </ul>
+		            </nav>
+		
+		            <!-- Cart Menu -->
+		            <div class="cart-fav-search mb-50">
+		                <a href="#" class="search-nav"><img src="img/core-img/search.png" alt=""> Search</a>
+		            </div>
+				</c:when>
+				<c:otherwise>
+					<!-- Close Icon -->
+		            <div class="nav-close">
+		                <i class="fa fa-close" aria-hidden="true"></i>
+		            </div>
+		            <!-- Logo -->
+		            <div class="logo">
+		                <a href="main.mc"><img src="img/core-img/logo.png" alt=""></a>
+		            </div>
+		            
+		            
+		            <div class="main_sign_button">
+			  			<a href="sign_in.mc" data-title="Sign in" id="sign"></a>			
+					</div>
+		            
+		            
+		            <!-- Amado Nav -->
+		            <nav class="amado-nav" style="margin-bottom: 50px" >
+		                <ul>
+		                    <li class="active"><a href="main.mc">Home</a></li>
+		                    <li><a href="shop.mc">Shop</a></li>
+		                    <li><a href="product_details.mc">Product</a></li>
+		                    <li><a href="cart.mc">Cart</a></li>
+		                    <li><a href="checkout.mc">Checkout</a></li>
+		                </ul>
+		            </nav>
+		
+		            <!-- Cart Menu -->
+		            <div class="cart-fav-search mb-50">
+		                <a href="cart.mc" class="cart-nav"><img src="img/core-img/cart.png" alt=""> Cart <span>(0)</span></a>
+		                <a href="#" class="fav-nav"><img src="img/core-img/favorites.png" alt=""> Favourite</a>
+		                <a href="#" class="search-nav"><img src="img/core-img/search.png" alt=""> Search</a>
+		            </div>	
+				</c:otherwise>
+			</c:choose>
+        
+        
+        
+
             <!-- Social Button -->
             <div class="social-info d-flex justify-content-between">
                 <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
@@ -115,131 +163,19 @@
             </div>
         </header>
         <!-- Header Area End -->
-
-        <!-- Product Catagories Area Start -->
-        <div class="products-catagories-area clearfix">
-            <div class="amado-pro-catagory clearfix">
-
-                <!-- Single Catagory -->
-                <div class="single-products-catagory clearfix">
-                    <a href="shop.mc">
-                        <img src="img/bg-img/1.jpg" alt="">
-                        <!-- Hover Content -->
-                        <div class="hover-content">
-                            <div class="line"></div>
-                            <p>From $180</p>
-                            <h4>Modern Chair</h4>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Single Catagory -->
-                <div class="single-products-catagory clearfix">
-                    <a href="shop.mc">
-                        <img src="img/bg-img/2.jpg" alt="">
-                        <!-- Hover Content -->
-                        <div class="hover-content">
-                            <div class="line"></div>
-                            <p>From $180</p>
-                            <h4>Minimalistic Plant Pot</h4>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Single Catagory -->
-                <div class="single-products-catagory clearfix">
-                    <a href="shop.mc">
-                        <img src="img/bg-img/3.jpg" alt="">
-                        <!-- Hover Content -->
-                        <div class="hover-content">
-                            <div class="line"></div>
-                            <p>From $180</p>
-                            <h4>Modern Chair</h4>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Single Catagory -->
-                <div class="single-products-catagory clearfix">
-                    <a href="shop.mc">
-                        <img src="img/bg-img/4.jpg" alt="">
-                        <!-- Hover Content -->
-                        <div class="hover-content">
-                            <div class="line"></div>
-                            <p>From $180</p>
-                            <h4>Night Stand</h4>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Single Catagory -->
-                <div class="single-products-catagory clearfix">
-                    <a href="shop.mc">
-                        <img src="img/bg-img/5.jpg" alt="">
-                        <!-- Hover Content -->
-                        <div class="hover-content">
-                            <div class="line"></div>
-                            <p>From $18</p>
-                            <h4>Plant Pot</h4>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Single Catagory -->
-                <div class="single-products-catagory clearfix">
-                    <a href="shop.mc">
-                        <img src="img/bg-img/6.jpg" alt="">
-                        <!-- Hover Content -->
-                        <div class="hover-content">
-                            <div class="line"></div>
-                            <p>From $320</p>
-                            <h4>Small Table</h4>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Single Catagory -->
-                <div class="single-products-catagory clearfix">
-                    <a href="shop.mc">
-                        <img src="img/bg-img/7.jpg" alt="">
-                        <!-- Hover Content -->
-                        <div class="hover-content">
-                            <div class="line"></div>
-                            <p>From $318</p>
-                            <h4>Metallic Chair</h4>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Single Catagory -->
-                <div class="single-products-catagory clearfix">
-                    <a href="shop.mc">
-                        <img src="img/bg-img/8.jpg" alt="">
-                        <!-- Hover Content -->
-                        <div class="hover-content">
-                            <div class="line"></div>
-                            <p>From $318</p>
-                            <h4>Modern Rocking Chair</h4>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Single Catagory -->
-                <div class="single-products-catagory clearfix">
-                    <a href="shop.mc">
-                        <img src="img/bg-img/9.jpg" alt="">
-                        <!-- Hover Content -->
-                        <div class="hover-content">
-                            <div class="line"></div>
-                            <p>From $318</p>
-                            <h4>Home Deco</h4>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <!-- Product Catagories Area End -->
+     
+    	<!--Center Start -->
+		<c:choose>
+			<c:when test="${center != null }">
+				<jsp:include page="${center }.jsp"/>
+			</c:when>
+			<c:otherwise>
+				<jsp:include page="main_product.jsp"/>
+			</c:otherwise>
+		</c:choose>
+		<!--Center End -->
     </div>
+    
     <!-- ##### Main Content Wrapper End ##### -->
 
     <!-- ##### Newsletter Area Start ##### -->
@@ -280,38 +216,63 @@
                         </div>
                         <!-- Copywrite Text -->
                         <p class="copywrite"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made by Jihwan Choi with ACE Team  <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Samsung Multi Campus</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                     </div>
                 </div>
                 <!-- Single Widget Area -->
                 <div class="col-12 col-lg-8">
                     <div class="single_widget_area">
-                        <!-- Footer Menu -->
-                        <div class="footer_menu">
-                            <nav class="navbar navbar-expand-lg justify-content-end">
-                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#footerNavContent" aria-controls="footerNavContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
-                                <div class="collapse navbar-collapse" id="footerNavContent">
-                                    <ul class="navbar-nav ml-auto">
-                                        <li class="nav-item active">
-                                            <a class="nav-link" href="main.mc">Home</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="shop.mc">Shop</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="product_details.mc">Product</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="cart.mc">Cart</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="checkout.mc">Checkout</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </nav>
-                        </div>
+			            <c:choose>
+							<c:when test="${login_cust == null }">
+								<!-- Footer Menu -->
+		                        <div class="footer_menu">
+		                            <nav class="navbar navbar-expand-lg justify-content-end">
+		                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#footerNavContent" aria-controls="footerNavContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+		                                <div class="collapse navbar-collapse" id="footerNavContent">
+		                                    <ul class="navbar-nav ml-auto">
+		                                        <li class="nav-item active">
+		                                            <a class="nav-link" href="main.mc">Home</a>
+		                                        </li>
+		                                        <li class="nav-item">
+		                                            <a class="nav-link" href="shop.mc">Shop</a>
+		                                        </li>
+		                                        <li class="nav-item">
+		                                            <a class="nav-link" href="product_details.mc">Product</a>
+		                                        </li>
+		                                    </ul>
+		                                </div>
+		                            </nav>
+		                        </div>
+							</c:when>
+							<c:otherwise>
+		                        <!-- Footer Menu -->
+		                        <div class="footer_menu">
+		                            <nav class="navbar navbar-expand-lg justify-content-end">
+		                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#footerNavContent" aria-controls="footerNavContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+		                                <div class="collapse navbar-collapse" id="footerNavContent">
+		                                    <ul class="navbar-nav ml-auto">
+		                                        <li class="nav-item active">
+		                                            <a class="nav-link" href="main.mc">Home</a>
+		                                        </li>
+		                                        <li class="nav-item">
+		                                            <a class="nav-link" href="shop.mc">Shop</a>
+		                                        </li>
+		                                        <li class="nav-item">
+		                                            <a class="nav-link" href="product_details.mc">Product</a>
+		                                        </li>
+		                                        <li class="nav-item">
+		                                            <a class="nav-link" href="cart.mc">Cart</a>
+		                                        </li>
+		                                        <li class="nav-item">
+		                                            <a class="nav-link" href="checkout.mc">Checkout</a>
+		                                        </li>
+		                                    </ul>
+		                                </div>
+		                            </nav>
+		                        </div>		
+							</c:otherwise>
+					</c:choose>
                     </div>
                 </div>
             </div>

@@ -30,21 +30,26 @@ public class MainController {
 	@RequestMapping("/shop.mc")
 	public ModelAndView shop() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("shop");
+		mv.setViewName("main");
+		mv.addObject("center", "shop");
 		return mv;
 	}
 	
 	@RequestMapping("/cart.mc")
 	public ModelAndView cart() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("cart");
+		mv.setViewName("main");
+		mv.addObject("center", "cart");
 		return mv;
 	}
+	
+	
 	
 	@RequestMapping("/checkout.mc")
 	public ModelAndView checkout() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("checkout");
+		mv.setViewName("main");
+		mv.addObject("center", "checkout");
 		return mv;
 	}
 	
