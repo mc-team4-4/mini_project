@@ -7,7 +7,7 @@
 	<meta charset="UTF-8">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
 
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="img/sign_in_up_icons/favicon.ico"/>
@@ -50,7 +50,7 @@
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter E-mail">
 						<input class="input100" type="text" name="E-mail" placeholder="E-mail">
-						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+						<span class="focus-input100" data-placeholder="&#x2709;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
