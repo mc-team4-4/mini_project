@@ -49,7 +49,19 @@ public class MainController {
 	}
 	
 	
-	
+	@RequestMapping("/sign_in.mc")
+	public ModelAndView sign_in() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("sign_in");
+		return mv;
+	}
+
+	@RequestMapping("/sign_up.mc")
+	public ModelAndView sign_up() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("sign_up");
+		return mv;
+	}
 
 }
 

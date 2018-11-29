@@ -23,6 +23,9 @@
     <link rel="stylesheet" href="css/core-style.css">
     <link rel="stylesheet" href="style.css">
 
+	<!-- Main sign button CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="css/main_sign_button.css">
 </head>
 
 <body>
@@ -55,6 +58,11 @@
             <div class="amado-navbar-brand">
                 <a href="main.mc"><img src="img/core-img/logo.png" alt=""></a>
             </div>
+            
+             <div class="main_sign_button">
+	  			<a href="sign_in.mc" data-title="Sign in" id="sign"  data-modal="#modal" class="modal__trigger"></a>
+			</div>
+			
             <!-- Navbar Toggler -->
             <div class="amado-navbar-toggler">
                 <span></span><span></span><span></span>
@@ -71,6 +79,12 @@
             <div class="logo">
                 <a href="main.mc"><img src="img/core-img/logo.png" alt=""></a>
             </div>
+            
+            
+            <div class="main_sign_button">
+	  			<a href="sign_in.mc" data-title="Sign in" id="sign"></a>			
+			</div>
+            
             <!-- Amado Nav -->
             <nav class="amado-nav">
                 <ul>
@@ -315,6 +329,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
+    <!-- Main sign button js -->
+    <script  src="js/main_sign_button.js"></script>
+    
 
 </body>
 
