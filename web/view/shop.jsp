@@ -14,10 +14,10 @@
                 <!--  Catagories  -->
                 <div class="catagories-menu">
                     <ul>
-                        <li class="active"><a href="#">Chairs</a></li>
-                        <li><a href="#">Beds</a></li>
-                        <li><a href="#">Accesories</a></li>
-                        <li><a href="#">Furniture</a></li>
+                        <li class="active"><a href="#">포켓도시락</a></li>
+                        <li><a href="#">식단프로그램</a></li>
+                        <li><a href="#">건강음료수</a></li>
+                        <li><a href="#">건강간식</a></li>
                         <li><a href="#">Home Deco</a></li>
                         <li><a href="#">Dressings</a></li>
                         <li><a href="#">Tables</a></li>
@@ -144,10 +144,10 @@
                     <div class="col-12 col-sm-6 col-md-12 col-xl-6">
                         <div class="single-product-wrapper">
                             <!-- Product Image -->
-                            <div class="product-img">
-                                <img src="img/product-img/product1.jpg" alt="">
+                            <div class="img-pk">
+                                <img src="img/img-pk/1/1.jpg" alt="">
                                 <!-- Hover Thumb -->
-                                <img class="hover-img" src="img/product-img/product2.jpg" alt="">
+                                <img class="hover-img" src="img/img-pk/1/1-3.jpg" alt="">
                             </div>
 
                             <!-- Product Description -->
@@ -155,9 +155,9 @@
                                 <!-- Product Meta Data -->
                                 <div class="product-meta-data">
                                     <div class="line"></div>
-                                    <p class="product-price">$180</p>
+                                    <p class="product-price">(8팩)29,600원</p>
                                     <a href="product_details.mc">
-                                        <h6>Modern Chair</h6>
+                                        <h6>곤드레나물밥<br>매콤돼지고기볶음</h6>
                                     </a>
                                 </div>
                                 <!-- Ratings & Cart -->
