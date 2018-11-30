@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import org.springframework.transaction.annotation.Transactional;
 
-public interface Biz<K , V> {
+public interface Services<K , V> {
 	@Transactional
 	public void register(V v) throws Exception;
 	@Transactional

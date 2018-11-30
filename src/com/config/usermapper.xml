@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.UserMapper">
+
+	<resultMap type="user" id="userResult">
+		<result column="USERID" property="email"/>
+		<result column="PASSWORD" property="password"/>
+		<result column="NAME" property="name"/>
+		<result column="PHONE_NUMBER" property="phone_number"/>
+		<result column="STATUS" property="status"/>
+		<result column="ADDRESS" property="address"/>
+	</resultMap>
+	
+	<insert id="insert" parameterType="user">
+		INSERT INTO USER_TB VALUES (#{email},#{password},#{name},#{phone_number},null,#{address})
+	</insert>
+
+	<delete id="delete" parameterType="String">
+		DELETE FROM USER_TB WHERE USERID=#{obj}
+	</delete>
+	
+	<update id="update" parameterType="user">
+		UPDATE USER_TB SET PASSWORD=#{password},NAME=#{name},HP=#{phone_number},STATUS=#{status},ADDRESS=#{address} WHERE USERID=#{email}
+	</update>
+
+	<select id="select" parameterType="String" resultMap="userResult">
+		SELECT * FROM USER_TB WHERE USERID=#{obj}
+	</select>
+	
+	<select id="selectall" resultMap="userResult">
+		SELECT * FROM USER_TB
+	</select>
+
+	
+</mapper>
+
+
+
+
+
+

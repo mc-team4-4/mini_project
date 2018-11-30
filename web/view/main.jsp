@@ -84,7 +84,7 @@
         <header class="header-area clearfix">
         
         	<c:choose>
-				<c:when test="${login_cust == null }">
+				<c:when test="${login_user == null }">
    
 		            <!-- Close Icon -->
 		            <div class="nav-close">
@@ -126,8 +126,10 @@
 		            </div>
 		            
 		            
-		            <div class="main_sign_button">
-			  			<a href="sign_in.mc" data-title="Sign in" id="sign"></a>			
+		            <div>
+		            	<br>
+			  			 Welcome! ${login_user.email }
+			  			<br><br>
 					</div>
 		            
 		            
@@ -224,7 +226,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                 <div class="col-12 col-lg-8">
                     <div class="single_widget_area">
 			            <c:choose>
-							<c:when test="${login_cust == null }">
+							<c:when test="${login_user == null }">
 								<!-- Footer Menu -->
 		                        <div class="footer_menu">
 		                            <nav class="navbar navbar-expand-lg justify-content-end">
