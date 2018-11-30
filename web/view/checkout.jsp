@@ -18,10 +18,7 @@
                             <form action="#" method="post">
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <input type="text" class="form-control" id="first_name" value="" placeholder="First Name" required>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <input type="text" class="form-control" id="last_name" value="" placeholder="Last Name" required>
+                                        <input type="text" class="form-control" id="name" value="" placeholder="Name" required>
                                     </div>
                                     <div class="col-12 mb-3">
                                         <input type="text" class="form-control" id="company" placeholder="Company Name" value="">

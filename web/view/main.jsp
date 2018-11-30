@@ -63,28 +63,55 @@
     <!-- ##### Main Content Wrapper Start ##### -->
     <div class="main-content-wrapper d-flex clearfix">
 
-        <!-- Mobile Nav (max width 767px)-->
-        <div class="mobile-nav">
-            <!-- Navbar Brand -->
-            <div class="amado-navbar-brand">
-                <a href="main.mc"><img src="img/core-img/logo.png" alt=""></a>
-            </div>
-            
-             <div class="main_sign_button">
-	  			<a href="sign_in.mc" data-title="Sign in" id="sign"></a>
-			</div>
-			
-            <!-- Navbar Toggler -->
-            <div class="amado-navbar-toggler">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
+
+		<c:choose>
+			<c:when test="${login_user_email == null }">
+		        <!-- Mobile Nav (max width 767px)-->
+		        <div class="mobile-nav">
+		            <!-- Navbar Brand -->
+		            <div class="amado-navbar-brand">
+		                <a href="main.mc"><img src="img/core-img/logo.png" alt=""></a>
+		            </div>
+		            
+		             <div class="main_sign_button">
+			  			<a href="sign_in.mc" data-title="Sign in" id="sign"></a>
+					</div>
+					
+		            <!-- Navbar Toggler -->
+		            <div class="amado-navbar-toggler">
+		                <span></span><span></span><span></span>
+		            </div>
+		        </div>
+			</c:when>
+			<c:otherwise>
+		        <!-- Mobile Nav (max width 767px)-->
+		        <div class="mobile-nav">
+		            <!-- Navbar Brand -->
+		            <div class="amado-navbar-brand">
+		                <a href="main.mc"><img src="img/core-img/logo.png" alt=""></a>
+		            </div>
+		        
+		             <div class="main_sign_button" style="margin-left: 20px">
+			  			<a href="sign_out.mc" data-title="Logout" id="sign"></a>			
+					</div>
+									
+		            <!-- Navbar Toggler -->
+		            <div class="amado-navbar-toggler" style="margin-left: -20px">
+		                <span></span><span></span><span></span>
+		            </div>
+		        </div>		
+			</c:otherwise>
+		</c:choose>
+
+
+
+
 
         <!-- Header Area Start -->
         <header class="header-area clearfix">
         
         	<c:choose>
-				<c:when test="${login_user == null }">
+				<c:when test="${login_user_email == null }">
    
 		            <!-- Close Icon -->
 		            <div class="nav-close">
@@ -126,9 +153,13 @@
 		            </div>
 		            
 		            
+		            <div class="main_sign_button">
+			  			<a href="sign_out.mc" data-title="Logout" id="sign"></a>			
+					</div>
+					
 		            <div>
 		            	<br>
-			  			 Welcome! ${login_user.email }
+			  			 Welcome! ${login_user_email}
 			  			<br><br>
 					</div>
 		            
@@ -141,6 +172,7 @@
 		                    <li><a href="product_details.mc">Product</a></li>
 		                    <li><a href="cart.mc">Shopping Cart</a></li>
 		                    <li><a href="checkout.mc">Checkout</a></li>
+		                    <li><a href="user_detail.mc">User Detail</a></li>
 		                </ul>
 		            </nav>
 		

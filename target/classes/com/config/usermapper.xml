@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</delete>
 	
 	<update id="update" parameterType="user">
-		UPDATE USER_TB SET PASSWORD=#{password},NAME=#{name},HP=#{phone_number},STATUS=#{status},ADDRESS=#{address} WHERE USERID=#{email}
+		UPDATE USER_TB SET PASSWORD=#{password},NAME=#{name},PHONE_NUMBER=#{phone_number},STATUS=#{status},ADDRESS=#{address} WHERE USERID=#{email}
 	</update>
 
 	<select id="select" parameterType="String" resultMap="userResult">

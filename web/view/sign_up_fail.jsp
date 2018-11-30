@@ -3,4 +3,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 
 
-<h1>Sign up Fail Page</h1>
+<!-- <h1>Sign up Fail Page</h1>-->

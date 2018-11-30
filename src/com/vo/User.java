@@ -2,6 +2,7 @@ package com.vo;
 
 public class User {
 	String email;
+	String password_current;
 	String password;
 	String password_confirm;
 	String name;
@@ -13,14 +14,6 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 
-	
-	public User(String email, String password, String name, String phone_number, String address) {
-		this.email = email;
-		this.password = password;
-		this.name = name;
-		this.phone_number = phone_number;
-		this.address = address;
-	}
 
 	public User(String email, String password, String password_confirm, String name, String phone_number,
 			String address) {
@@ -32,10 +25,23 @@ public class User {
 		this.address = address;
 	}
 
+	
 
 	public User(String email, String password, String password_confirm, String name, String phone_number, String status,
 			String address) {
 		this.email = email;
+		this.password = password;
+		this.password_confirm = password_confirm;
+		this.name = name;
+		this.phone_number = phone_number;
+		this.status = status;
+		this.address = address;
+	}
+
+	public User(String email, String password_current, String password, String password_confirm, String name,
+			String phone_number, String status, String address) {
+		this.email = email;
+		this.password_current = password_current;
 		this.password = password;
 		this.password_confirm = password_confirm;
 		this.name = name;
@@ -52,6 +58,16 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+
+	public String getPassword_current() {
+		return password_current;
+	}
+
+
+	public void setPassword_current(String password_current) {
+		this.password_current = password_current;
 	}
 
 
@@ -93,7 +109,7 @@ public class User {
 	public void setPhone_number(String phone_number) {
 		this.phone_number = phone_number;
 	}
-	
+
 
 	public String getStatus() {
 		return status;
@@ -117,11 +133,10 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [email=" + email + ", password=" + password + ", password_confirm=" + password_confirm + ", name="
-				+ name + ", phone_number=" + phone_number + ", status=" + status + ", address=" + address + "]";
+		return "User [email=" + email + ", password_current=" + password_current + ", password=" + password
+				+ ", password_confirm=" + password_confirm + ", name=" + name + ", phone_number=" + phone_number
+				+ ", status=" + status + ", address=" + address + "]";
 	}
-	
-	
 	
 	
 	
