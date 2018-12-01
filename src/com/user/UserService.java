@@ -1,4 +1,4 @@
-package com.cust;
+package com.user;
 
 import java.util.ArrayList;
 
@@ -7,13 +7,13 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import com.frame.Biz;
 import com.frame.Dao;
-import com.vo.Cust;
+import com.frame.Services;
+import com.vo.User;
 
-@Service("cbiz")
-public class CustBiz implements Biz<String, Cust> {
-	@Resource(name="cdao")
+@Service("userservice")
+public class UserService implements Services<String, User> {
+	@Resource(name="userdao")
 	Dao dao;
 		
 	public Dao getDao() {
@@ -25,7 +25,7 @@ public class CustBiz implements Biz<String, Cust> {
 	}
 
 	@Override
-	public void register(Cust v) {
+	public void register(User v) {
 		dao.insert(v);
 	}
 
@@ -35,17 +35,17 @@ public class CustBiz implements Biz<String, Cust> {
 	}
 
 	@Override
-	public void modify(Cust v) {
+	public void modify(User v) {
 		dao.update(v);
 	}
 
 	@Override
-	public Cust get(String k) {
-		return (Cust) dao.select(k);
+	public User get(String k) {
+		return (User) dao.select(k);
 	}
 
 	@Override
-	public ArrayList<Cust> get() {
+	public ArrayList<User> get() {
 		return dao.select();
 	}
 

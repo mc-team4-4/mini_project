@@ -1,26 +1,26 @@
 package com.controller;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.frame.Biz;
-import com.vo.Cust;
+import com.frame.Services;
+import com.vo.User;
 
 @Controller
 public class MainController {
 
-	@Resource(name = "cbiz")
-	Biz<String , Cust> biz;
+	@Resource(name = "userservice")
+	Services<String , User> services;
 	
 	@RequestMapping("/main.mc")
 	public String main() {
@@ -44,7 +44,7 @@ public class MainController {
 	}
 	
 	
-	
+
 	@RequestMapping("/checkout.mc")
 	public ModelAndView checkout() {
 		ModelAndView mv = new ModelAndView();
@@ -53,6 +53,13 @@ public class MainController {
 		return mv;
 	}
 	
+	@RequestMapping("/product_details.mc")
+	public ModelAndView product_details() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("main");
+		mv.addObject("center", "product_details");
+		return mv;
+	}
 	
 	@RequestMapping("/sign_in.mc")
 	public ModelAndView sign_in() {
@@ -61,12 +68,104 @@ public class MainController {
 		return mv;
 	}
 
+	@RequestMapping("/sing_in_impl.mc")
+	public ModelAndView sing_in_impl(@RequestParam(value="email", required=true) String email, @RequestParam(value="password", required=true) String password, HttpSession session, HttpServletResponse response) {
+		ModelAndView mv = new ModelAndView();
+		User dbuser = null;
+		
+		try {
+			dbuser = services.get(email);
+			if(dbuser.getPassword().equals(password)) {
+				session.setAttribute("login_user_email", dbuser.getEmail());
+				mv.setViewName("main");
+			}else {
+				mv.setViewName("sign_in_fail");
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>alert('Sign in is fail. Please check on your E-mail or Password.'); history.go(-1);</script>");
+				out.flush();
+				
+			}
+		} catch (Exception e) {
+
+			try {
+				mv.setViewName("sign_in_fail");
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>alert('Sign in is fail. Please check on your E-mail or Password.'); history.go(-1);</script>");
+				out.flush();
+						
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+	
+			e.printStackTrace();
+		}
+
+		return mv;
+	}
+	
+	@RequestMapping("/sign_out.mc")
+	public String sign_out(HttpServletRequest request, HttpSession session) {
+		session = request.getSession();
+		
+		if(session != null) {
+			session.invalidate();
+		}
+
+		return "main";
+	}
+	
+	
 	@RequestMapping("/sign_up.mc")
 	public ModelAndView sign_up() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("sign_up");
 		return mv;
 	}
+	
+	@RequestMapping("/sing_up_impl.mc")
+	public ModelAndView sing_up_impl(User user, HttpServletResponse response) {
+		ModelAndView mv = new ModelAndView();
+		try {
+			if(user.getPassword().equals(user.getPassword_confirm())) {
+				services.register(user);
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>alert('Sign up Complete!');</script>");
+				out.flush();
+				mv.setViewName("main");
+				
+			}
+			else {
+				mv.setViewName("sign_up_fail");
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>alert('Passwords are different'); history.go(-1);</script>");
+				out.flush();
+			
+			}
+
+		} catch (Exception e) {
+		
+			try {
+				mv.setViewName("sign_up_fail");
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>alert('Passwords are different'); history.go(-1);</script>");
+				out.flush();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			e.printStackTrace();
+		}
+		
+		return mv;
+	}
+
 
 }
 
