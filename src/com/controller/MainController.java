@@ -75,8 +75,6 @@ public class MainController {
 		
 		try {
 			dbuser = services.get(email);
-			System.out.println("dbuser.getPassword(): "+dbuser.getPassword());
-			System.out.println("password: "+password);
 			if(dbuser.getPassword().equals(password)) {
 				session.setAttribute("login_user_email", dbuser.getEmail());
 				mv.setViewName("main");

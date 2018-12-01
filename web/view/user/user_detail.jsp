@@ -3,7 +3,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>Sign up</title>
+	<title>User Detail</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+function Modify() {
+	document.user_detail_form.action="user_detail_impl.mc"; 
+	document.user_detail_form.method="post"; 
+	document.user_detail_form.submit();
+}
+
+function Withdrawal() {
+	document.user_detail_form.action="withdrawal.mc"; 
+	document.user_detail_form.method="post"; 
+	document.user_detail_form.submit();
+}
+</script>	
+
 	<meta charset="UTF-8">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,7 +51,7 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('img/bg-01.jpg');">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" method="POST" action="user_detail_impl.mc">
+				<form class="login100-form validate-form" name="user_detail_form">
 					<span class="login100-form-logo">
 						<i class="zmdi zmdi-landscape"></i>
 					</span>
@@ -85,9 +100,9 @@
 					</div>
 					
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">Modify</button>
+						<button class="login100-form-btn" onclick="Modify();">Modify</button>
 						
-						<button class="login100-form-btn">Withdrawal</button>
+						<button class="login100-form-btn" onclick="Withdrawal();">Withdrawal</button>
 					</div>
 
 				</form>

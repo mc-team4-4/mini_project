@@ -122,6 +122,41 @@ public class UserController {
 		
 		return mv;
 	}
+	
+	
+	@RequestMapping("/withdrawal.mc")
+	public ModelAndView withdrawal(User user, HttpServletResponse response, HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		
+		String email = user.getEmail();
+		System.out.println("Withdrawal E-mail: "+ email);
+		
+		try {
+			services.remove(email);
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('Withdrawal Complete!');</script>");
+			out.flush();
+			
+			session.removeAttribute("user_email");
+			session.removeAttribute("user_password");
+			session.removeAttribute("user_name");
+			session.removeAttribute("user_phone_number");
+			session.removeAttribute("user_status");
+			session.removeAttribute("user_address");
+			session.removeAttribute("login_user_email");
+		
+			
+			mv.setViewName("main");
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+			
+		return mv;
+	}
 
 }
 
