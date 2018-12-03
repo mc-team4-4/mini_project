@@ -95,6 +95,16 @@
 										</div>
 										
 
+										<div class="row form-group">
+											<div class="col col-md-3">
+												<label for="text-input" class=" form-control-label">Product
+													Amount</label>
+											</div>
+											<div class="col-12 col-md-9">
+												<input type="text" id="product_amount" name="product_amount"
+													placeholder="Enter Product Amount" class="form-control"> 
+											</div>
+										</div>
 										
 										<div class="row form-group">
 											<div class="col col-md-3">
@@ -108,16 +118,7 @@
 										</div>
 										
 										
-										<div class="row form-group">
-											<div class="col col-md-3">
-												<label for="text-input" class=" form-control-label">Product
-													Amount</label>
-											</div>
-											<div class="col-12 col-md-9">
-												<input type="text" id="product_amount" name="product_amount"
-													placeholder="Enter Product Amount" class="form-control"> 
-											</div>
-										</div>
+
 										
 										<div class="row form-group">
 											<div class="col col-md-3">
