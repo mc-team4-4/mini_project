@@ -75,17 +75,28 @@ public class MainController {
 		
 		try {
 			dbuser = services.get(email);
-			if(dbuser.getPassword().equals(password)) {
-				session.setAttribute("login_user_email", dbuser.getEmail());
-				mv.setViewName("main");
-			}else {
-				mv.setViewName("sign_in_fail");
-				response.setContentType("text/html; charset=UTF-8");
-				PrintWriter out = response.getWriter();
-				out.println("<script>alert('Sign in is fail. Please check on your E-mail or Password.'); history.go(-1);</script>");
-				out.flush();
+			
+			if(email.equals("admin@admin.com")) {
+				session.setAttribute("login_admin_email", dbuser.getEmail());
+				session.setAttribute("login_admin_name", dbuser.getName());
+				mv.setViewName("admin/admin_main");
 				
 			}
+			else {
+				if(dbuser.getPassword().equals(password)) {
+					session.setAttribute("login_user_email", dbuser.getEmail());
+					mv.setViewName("main");
+				}else {
+					mv.setViewName("sign_in_fail");
+					response.setContentType("text/html; charset=UTF-8");
+					PrintWriter out = response.getWriter();
+					out.println("<script>alert('Sign in is fail. Please check on your E-mail or Password.'); history.go(-1);</script>");
+					out.flush();
+					
+				}
+			}
+			
+
 		} catch (Exception e) {
 
 			try {
@@ -129,23 +140,25 @@ public class MainController {
 	public ModelAndView sing_up_impl(User user, HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
 		try {
-			if(user.getPassword().equals(user.getPassword_confirm())) {
+
+			if (user.getPassword().equals(user.getPassword_confirm())) {
 				services.register(user);
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter out = response.getWriter();
 				out.println("<script>alert('Sign up Complete!');</script>");
 				out.flush();
 				mv.setViewName("main");
-				
-			}
-			else {
+
+			} else {
 				mv.setViewName("sign_up_fail");
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter out = response.getWriter();
 				out.println("<script>alert('Passwords are different'); history.go(-1);</script>");
 				out.flush();
-			
+
 			}
+			
+
 
 		} catch (Exception e) {
 		

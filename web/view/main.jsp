@@ -24,7 +24,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title  -->
-    <title>Amado - Furniture Ecommerce Template | Home</title>
+    <title>Home</title>
 
     <!-- Favicon  -->
     <link rel="icon" href="img/core-img/favicon.ico">
@@ -70,7 +70,7 @@
 		        <div class="mobile-nav">
 		            <!-- Navbar Brand -->
 		            <div class="amado-navbar-brand">
-		                <a href="main.mc"><img src="img/core-img/logo.png" alt=""></a>
+		                <a href="main.mc"><img src="img/core-img/logo1.jpg" alt=""></a>
 		            </div>
 		            
 		             <div class="main_sign_button">
@@ -88,7 +88,7 @@
 		        <div class="mobile-nav">
 		            <!-- Navbar Brand -->
 		            <div class="amado-navbar-brand">
-		                <a href="main.mc"><img src="img/core-img/logo.png" alt=""></a>
+		                <a href="main.mc"><img src="img/core-img/logo1.jpg" alt=""></a>
 		            </div>
 		        
 		             <div class="main_sign_button" style="margin-left: 20px">
@@ -119,7 +119,7 @@
 		            </div>
 		            <!-- Logo -->
 		            <div class="logo">
-		                <a href="main.mc"><img src="img/core-img/logo.png" alt=""></a>
+		                <a href="main.mc"><img src="img/core-img/logo1.jpg" alt=""></a>
 		            </div>
 		            
 		            
@@ -131,7 +131,7 @@
 		            <!-- Amado Nav -->
 		            <nav class="amado-nav" style="margin-bottom: 30px">
 		                <ul>
-		                    <li class="active"><a href="main.mc">Home</a></li>
+		                    <li><a href="main.mc">Home</a></li>
 		                    <li><a href="shop.mc">Shop</a></li>
 		                    <li><a href="product_details.mc">Product</a></li>
 		                </ul>
@@ -149,7 +149,7 @@
 		            </div>
 		            <!-- Logo -->
 		            <div class="logo">
-		                <a href="main.mc"><img src="img/core-img/logo.png" alt=""></a>
+		                <a href="main.mc"><img src="img/core-img/logo1.jpg" alt=""></a>
 		            </div>
 		            
 		            
@@ -167,7 +167,7 @@
 		            <!-- Amado Nav -->
 		            <nav class="amado-nav" style="margin-bottom: 50px" >
 		                <ul>
-		                    <li class="active"><a href="main.mc">Home</a></li>
+		                    <li><a href="main.mc">Home</a></li>
 		                    <li><a href="shop.mc">Shop</a></li>
 		                    <li><a href="product_details.mc">Product</a></li>
 		                    <li><a href="cart.mc">Shopping Cart</a></li>
