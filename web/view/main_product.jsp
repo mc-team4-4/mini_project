@@ -14,12 +14,12 @@
 				    <!-- Single Catagory -->
 	                <div class="single-products-catagory clearfix">
 	                    <a href="shop.mc">
-	                        <img src="img/img-pk/main_product/"${item.img} alt="">
+	                        <img src="img/main_img/${img_item.img}" alt="">
 	                        <!-- Hover Content -->
 	                        <div class="hover-content">
 	                            <div class="line"></div>
-	                            <p>${item.price}</p>
-	                            <h4>${item.name}</h4>
+	                            <p>${img_item.price}</p>
+	                            <h4>${img_item.name}</h4>
 	                        </div>
 	                    </a>
 	                </div>

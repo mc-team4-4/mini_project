@@ -63,6 +63,25 @@
 									<strong>Add</strong> Product
 								</div>
 								<div class="card-body card-block">
+								<form name="fileForm" action="image_upload.mc" method="post" enctype="multipart/form-data">
+
+							
+										<div class="row form-group">
+											<div class="col col-md-3">
+												<label for="file-multiple-input" class=" form-control-label">Product
+													Image File</label>
+											</div>
+											<div class="col-12 col-md-9">
+												<input type="file" name="file" multiple="multiple">
+												${img}
+												
+												<input type="submit" value="Upload" />
+								
+
+											</div>
+										</div>
+									</form>
+
 									<form name="add_product_form" class="form-horizontal">
 										
 										<div class="row form-group">
@@ -70,8 +89,6 @@
 												<label for="select" class=" form-control-label">Category</label>
 											</div>
 											<div class="col-12 col-md-9">
-											
-											
 												<select name="category_id" id="category_id" class="form-control">
 													<option value="0"></option>
 													<option value="1">µµ½Ã¶ô</option>
@@ -117,24 +134,11 @@
 													placeholder="Enter Product Amount" class="form-control"> 
 											</div>
 										</div>
-										
-							
-								
+
 										<div class="row form-group">
-											<div class="col col-md-3">
-												<label for="file-multiple-input" class=" form-control-label">Product
-													Image File</label>
-											</div>
-											<div class="col-12 col-md-9">
-												<input type="file" name="img" multiple="multiple"
-													class="form-control-file">
-			
-											</div>
-									
-										
+											<input type="hidden" name="img" value="${img}">
 										</div>
-						
-										
+
 										
 										<div class="row form-group">
 											<div class="col col-md-3">
@@ -161,7 +165,7 @@
 
 									</form>
 								</div>
-								
+																		
 								
 								
 

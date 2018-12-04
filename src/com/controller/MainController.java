@@ -23,6 +23,7 @@ public class MainController {
 
 	@Resource(name = "userservice")
 	Services<String , User> services;
+	@Resource(name = "productservice")
 	Services<String , Product> product_services;
 	
 //	@RequestMapping("/main.mc")
@@ -41,11 +42,12 @@ public class MainController {
 			mv.setViewName("main");
 			p_list = product_services.get();
 			mv.addObject("p_list", p_list);
-			
+			mv.addObject("center", "main_product");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-	
+			e.printStackTrace();
 			mv.addObject("center", "main_product_null");	
+			
 		}
 
 		
