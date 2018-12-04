@@ -2,6 +2,7 @@ package com.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.frame.Services;
+import com.vo.Product;
 import com.vo.User;
 
 @Controller
@@ -21,11 +23,35 @@ public class MainController {
 
 	@Resource(name = "userservice")
 	Services<String , User> services;
+	Services<String , Product> product_services;
+	
+//	@RequestMapping("/main.mc")
+//	public String main() {
+//
+//		return "main";
+//	
+//	}
+
 	
 	@RequestMapping("/main.mc")
-	public String main() {
-		return "main";
+	public ModelAndView main(HttpServletResponse response) {
+		ModelAndView mv = new ModelAndView();
+		ArrayList<Product> p_list= null;
+		try {
+			mv.setViewName("main");
+			p_list = product_services.get();
+			mv.addObject("p_list", p_list);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+	
+			mv.addObject("center", "main_product_null");	
+		}
+
+		
+		return mv;
 	}
+	
 
 	@RequestMapping("/shop.mc")
 	public ModelAndView shop() {

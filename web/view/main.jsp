@@ -204,7 +204,7 @@
 				<jsp:include page="${center }.jsp"/>
 			</c:when>
 			<c:otherwise>
-				<jsp:include page="main_product.jsp"/>
+				<jsp:include page="main_product.jsp"/>	
 			</c:otherwise>
 		</c:choose>
 		<!--Center End -->

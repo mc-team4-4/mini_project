@@ -6,9 +6,10 @@
 	<link rel="stylesheet" type="text/css" href="css/sign_in_up_main.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script type="text/javascript">
+
 	function Add_Product() {
 		document.add_product_form.action="add_product_impl.mc"; 
-		document.add_product_form.method="get"; 
+		document.add_product_form.method="post"; 
 		document.add_product_form.submit();
 	}
 	
@@ -117,18 +118,22 @@
 											</div>
 										</div>
 										
-										
+							
+								
 										<div class="row form-group">
 											<div class="col col-md-3">
 												<label for="file-multiple-input" class=" form-control-label">Product
 													Image File</label>
 											</div>
 											<div class="col-12 col-md-9">
-												<input type="file" id="img"
-													name="img" multiple="multiple"
+												<input type="file" name="img" multiple="multiple"
 													class="form-control-file">
+			
 											</div>
+									
+										
 										</div>
+						
 										
 										
 										<div class="row form-group">
@@ -137,8 +142,9 @@
 													Content</label>
 											</div>
 											<div class="col-12 col-md-9">
-												<input type="text" id="content" name="content"
+												<input type="text" id="content" name="content" 
 													placeholder="Enter Product Content" class="form-control"> 
+													
 											</div>
 										</div>
 										
