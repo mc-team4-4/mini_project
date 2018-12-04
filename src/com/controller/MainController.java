@@ -88,6 +88,43 @@ public class MainController {
 		return mv;
 	}
 	
+	@RequestMapping("/lunch_box.mc")
+	public ModelAndView lunch_box() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("main");
+		mv.addObject("center", "shop");
+		mv.addObject("product_center", "lunch_box");
+		return mv;
+	}
+	
+	@RequestMapping("/diet_program.mc")
+	public ModelAndView diet_program() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("main");
+		mv.addObject("center", "shop");
+		mv.addObject("product_center", "diet_program");
+		return mv;
+	}
+	
+	@RequestMapping("/health_drink.mc")
+	public ModelAndView health_drink() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("main");
+		mv.addObject("center", "shop");
+		mv.addObject("product_center", "health_drink");
+		return mv;
+	}
+	
+	@RequestMapping("/health_snack.mc")
+	public ModelAndView health_snack() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("main");
+		mv.addObject("center", "shop");
+		mv.addObject("product_center", "health_snack");
+		return mv;
+	}
+	
+	
 	@RequestMapping("/cart.mc")
 	public ModelAndView cart() {
 		ModelAndView mv = new ModelAndView();
