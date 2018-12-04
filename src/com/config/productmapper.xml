@@ -32,7 +32,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="selectall" resultMap="productResult">
-		SELECT * FROM PRODUCT_TB 
+		SELECT * FROM PRODUCT_TB ORDER BY PRODUCTID
 	</select>
 	
 

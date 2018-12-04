@@ -33,15 +33,39 @@ public class MainController {
 //	
 //	}
 
-	
+
+	ArrayList<String> front_main_img_list = new ArrayList<String>();
 	@RequestMapping("/main.mc")
 	public ModelAndView main(HttpServletResponse response) {
+		front_main_img_list.clear();
 		ModelAndView mv = new ModelAndView();
-		ArrayList<Product> p_list= null;
+		ArrayList<Product> p_list = null;
+		
+		String front_main_img = null;
+		
+		
 		try {
 			mv.setViewName("main");
 			p_list = product_services.get();
+	
+			for(Product product : p_list) {
+				
+				String main_img = product.getImg();
+				int index = main_img.indexOf(",");
+//				System.out.println(index);
+				
+				front_main_img = main_img.substring(0, index);
+				front_main_img_list.add(front_main_img);
+			
+				
+	
+				
+			}
+			
+			System.out.println(front_main_img_list);
+			
 			mv.addObject("p_list", p_list);
+			mv.addObject("front_main_img_list", front_main_img_list);
 			mv.addObject("center", "main_product");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -52,6 +76,7 @@ public class MainController {
 
 		
 		return mv;
+		
 	}
 	
 
@@ -152,7 +177,7 @@ public class MainController {
 		if(session != null) {
 			session.invalidate();
 		}
-
+		
 		return "main";
 	}
 	
@@ -161,6 +186,7 @@ public class MainController {
 	public ModelAndView sign_up() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("sign_up");
+		
 		return mv;
 	}
 	

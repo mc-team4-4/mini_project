@@ -30,7 +30,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="selectall" resultMap="userResult">
-		SELECT * FROM USER_TB
+		SELECT * FROM USER_TB ORDER BY USERID
 	</select>
 
 	

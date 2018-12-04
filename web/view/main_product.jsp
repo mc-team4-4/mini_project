@@ -7,24 +7,30 @@
 
 
 <!-- Product Catagories Area Start -->
+
         <div class="products-catagories-area clearfix">
             <div class="amado-pro-catagory clearfix">
-
-				<c:forEach var="img_item" items="${p_list}">
+				<%int i=0; %>
+				<c:forEach var="img_item" items="${p_list}" begin="<%=i %>" >
+					<c:forEach var="main_img" items="${front_main_img_list}" begin ="<%=i %>" end="<%=i %>">
 				    <!-- Single Catagory -->
 	                <div class="single-products-catagory clearfix">
 	                    <a href="shop.mc">
-	                        <img src="img/main_img/${img_item.img}" alt="">
-	                        <!-- Hover Content -->
+	   						
+	                    	<img src="img/main_img/${main_img}" alt="">	
+	                    	<!-- Hover Content -->
 	                        <div class="hover-content">
 	                            <div class="line"></div>
 	                            <p>${img_item.price}</p>
 	                            <h4>${img_item.name}</h4>
-	                        </div>
+	                        </div> 
+ 
 	                    </a>
 	                </div>
+	                </c:forEach>
+	                <%i++; %>
 				</c:forEach>
-     
+				
                 
             </div>
         </div>

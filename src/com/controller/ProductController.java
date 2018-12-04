@@ -31,15 +31,14 @@ public class ProductController {
 	
 	@Resource(name = "productservice")
 	Services<String , Product> services;
-	ArrayList<String> img_array= new ArrayList<String>();
+	String img_array = "";
 
 	@RequestMapping("/add_product.mc")
 	public ModelAndView add_product() {
 		ModelAndView mv = new ModelAndView();
-		img_array.clear();
+		img_array = "";
 		mv.setViewName("admin/admin_main");
 		mv.addObject("center", "add_product");
-		
 		return mv;
 	}
 	
@@ -48,8 +47,8 @@ public class ProductController {
 		ModelAndView mv = new ModelAndView();
 		try {
 			System.out.println(product);
-			img_array.clear();
 			services.register(product);
+			img_array = "";
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>alert('Add Product Complete!');</script>");
@@ -73,7 +72,14 @@ public class ProductController {
 		
 		try {
 			String orginalName = file.getOriginalFilename();
-			img_array.add(orginalName);
+			if(img_array.isEmpty()) {
+				img_array += orginalName;
+				
+			}else {
+				img_array += ","+orginalName;
+				
+			}
+			
 			model.addAttribute("img", img_array);
 			mv.setViewName("admin/admin_main");
 			mv.addObject("center", "add_product");
