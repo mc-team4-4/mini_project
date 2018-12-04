@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.CategoryMapper">
+
+	<resultMap type="category" id="categoryResult">
+		<result column="CATEGORYID" property="category_id"/>
+		<result column="NAME" property="name"/>
+	</resultMap>
+
+	<insert id="insert" parameterType="category">
+		INSERT INTO CATEGORY_TB VALUES (#{category_id},#{name})
+	</insert>
+
+	<delete id="delete" parameterType="String">
+		DELETE FROM CATEGORY_TB WHERE CATEGORYID=#{obj}
+	</delete>
+	
+	<update id="update" parameterType="category">
+		UPDATE CATEGORY_TB SET NAME=#{name} WHERE CATEGORYID=#{category_id}
+	</update>
+
+	<select id="select" parameterType="String" resultMap="categoryResult">
+		SELECT * FROM CATEGORY_TB WHERE CATEGORYID=#{obj}
+	</select>
+	
+	<select id="selectall" resultMap="categoryResult">
+		SELECT * FROM CATEGORY_TB
+	</select>
+
+	
+</mapper>
+
+
+
+
+
+

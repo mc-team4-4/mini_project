@@ -1,4 +1,4 @@
-package com.product;
+package com.category;
 
 import java.util.ArrayList;
 
@@ -9,11 +9,13 @@ import org.springframework.stereotype.Service;
 
 import com.frame.Dao;
 import com.frame.Services;
-import com.vo.Product;
+import com.vo.Category;
 
-@Service("productservice")
-public class ProductService implements Services<String, Product> {
-	@Resource(name="productdao")
+
+
+@Service("categoryservice")
+public class CategoryService implements Services<String, Category> {
+	@Resource(name="categorydao")
 	Dao dao;
 		
 	public Dao getDao() {
@@ -25,7 +27,7 @@ public class ProductService implements Services<String, Product> {
 	}
 
 	@Override
-	public void register(Product v) {
+	public void register(Category v) {
 		dao.insert(v);
 	}
 
@@ -35,17 +37,17 @@ public class ProductService implements Services<String, Product> {
 	}
 
 	@Override
-	public void modify(Product v) {
+	public void modify(Category v) {
 		dao.update(v);
 	}
 
 	@Override
-	public Product get(String k) {
-		return (Product) dao.select(k);
+	public Category get(String k) {
+		return (Category) dao.select(k);
 	}
 
 	@Override
-	public ArrayList<Product> get() {
+	public ArrayList<Category> get() {
 		return dao.select();
 	}
 

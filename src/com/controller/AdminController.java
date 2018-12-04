@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.frame.Services;
-import com.vo.User;
+import com.vo.Product;
 
 @Controller
 public class AdminController {
 
-	@Resource(name = "userservice")
-	Services<String , User> services;
+	@Resource(name = "productservice")
+	Services<String , Product> services;
 	
 	@RequestMapping("/admin_main.mc")
 	public String main() {
@@ -43,24 +43,6 @@ public class AdminController {
 		return mv;
 	}
 	
-	@RequestMapping("/add_product.mc")
-	public ModelAndView add_product() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("admin/admin_main");
-		mv.addObject("center", "add_product");
-		return mv;
-	}
-	
-	
-	@RequestMapping("/modify_product.mc")
-	public ModelAndView modify_product() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("admin/admin_main");
-		mv.addObject("center", "modify_product");
-		return mv;
-	}
-	
-	
 
 	
 	@RequestMapping("/admin_logout.mc")
@@ -74,4 +56,7 @@ public class AdminController {
 		return "main";
 	}
 
+	
+	
+	
 }
