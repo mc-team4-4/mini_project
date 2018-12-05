@@ -26,6 +26,8 @@ public class MainController {
 	@Resource(name = "productservice")
 	Services<String , Product> product_services;
 	
+	
+	
 //	@RequestMapping("/main.mc")
 //	public String main() {
 //
@@ -88,12 +90,44 @@ public class MainController {
 		return mv;
 	}
 	
+	ArrayList<String> lunch_box_img_list = new ArrayList<String>();
 	@RequestMapping("/lunch_box.mc")
 	public ModelAndView lunch_box() {
+		lunch_box_img_list.clear();
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("main");
-		mv.addObject("center", "shop");
-		mv.addObject("product_center", "lunch_box");
+		ArrayList<Product> lunch_box_list = null;
+		String lunch_box_img = null;
+		
+		
+		try {
+			mv.setViewName("main");
+			lunch_box_list = product_services.get();
+	
+			for(Product product : lunch_box_list) {
+				
+				String main_img = product.getImg();
+				int index = main_img.indexOf(",");
+//				System.out.println(index);
+				
+				lunch_box_img = main_img.substring(0, index);
+				lunch_box_img_list.add(lunch_box_img);
+	
+			}
+			
+			System.out.println(lunch_box_img_list);
+			
+			mv.addObject("lunch_box_list", lunch_box_list);
+			mv.addObject("lunch_box_img_list", lunch_box_img_list);
+			mv.addObject("center", "shop");
+			mv.addObject("product_center", "lunch_box");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+			
+		}
+		
+		
 		return mv;
 	}
 	

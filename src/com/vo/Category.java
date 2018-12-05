@@ -2,15 +2,15 @@ package com.vo;
 
 public class Category {
 	int category_id;
-	String name;
+	String category_name;
 	
 	public Category() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Category(int category_id, String name) {
+	public Category(int category_id, String category_name) {
 		this.category_id = category_id;
-		this.name = name;
+		this.category_name = category_name;
 	}
 
 	public int getCategory_id() {
@@ -21,18 +21,20 @@ public class Category {
 		this.category_id = category_id;
 	}
 
-	public String getName() {
-		return name;
+	public String getCategory_name() {
+		return category_name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setCategory_name(String category_name) {
+		this.category_name = category_name;
 	}
 
 	@Override
 	public String toString() {
-		return "Category [category_id=" + category_id + ", name=" + name + "]";
+		return "Category [category_id=" + category_id + ", category_name=" + category_name + "]";
 	}
+	
+
 	
 	
 	
