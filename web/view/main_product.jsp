@@ -13,25 +13,27 @@
 				<%int i=0; %>
 				<c:forEach var="img_item" items="${p_list}" begin="<%=i %>" >
 					<c:forEach var="main_img" items="${front_main_img_list}" begin ="<%=i %>" end="<%=i %>">
-				    <!-- Single Catagory -->
-	                <div class="single-products-catagory clearfix">
-	                    <a href="shop.mc">
-	   						
-	                    	<img src="img/main_img/${main_img}" alt="">	
-	                    	<!-- Hover Content -->
-	                        <div class="hover-content">
-	                            <div class="line"></div>
-	                            <p>${img_item.price}</p>
-	                            <h4>${img_item.name}</h4>
-	                        </div> 
- 
-	                    </a>
-	                </div>
+					   <form name="product_details_form" action="product_details.mc" method="post">
+					    <!-- Single Catagory -->
+		                <div class="single-products-catagory clearfix">
+		                  
+		                    	<input type="hidden" name="product_id" value="${img_item.product_id}">
+	
+		                    	<button onclick="Product();"><img src="img/main_img/${main_img}" alt=""></button>
+		                    	<!-- Hover Content -->
+		                        <div class="hover-content">
+		                            <div class="line"></div>
+		                            <p>${img_item.price}</p>
+		                            <h4>${img_item.name}</h4>
+		                        </div> 
+	 						
+		                   
+		                </div>
+	                 </form>
 	                </c:forEach>
 	                <%i++; %>
 				</c:forEach>
-				
-                
+              
             </div>
         </div>
         <!-- Product Catagories Area End -->

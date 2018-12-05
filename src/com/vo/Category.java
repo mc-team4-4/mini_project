@@ -33,7 +33,7 @@ public class Category {
 	public String toString() {
 		return "Category [category_id=" + category_id + ", category_name=" + category_name + "]";
 	}
-	
+
 
 	
 	

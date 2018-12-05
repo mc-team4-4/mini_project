@@ -8,17 +8,6 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		<result column="CATEGORYID" property="category_id"/>
 		<result column="CATEGORYNAME" property="category_name"/>
 	</resultMap>
-	
-	<resultMap type="product" id="productResult">
-		<result column="PRODUCTID" property="product_id"/>
-		<result column="CATEGORYID" property="category_id"/>
-		<result column="NAME" property="name"/>
-		<result column="PRICE" property="price"/>
-		<result column="AMOUNT" property="amount"/>
-		<result column="IMG" property="img"/>
-		<result column="CONTENT" property="content"/>
-	</resultMap>
-
 
 	<insert id="insert" parameterType="category">
 		INSERT INTO CATEGORY_TB VALUES (#{category_id},#{category_name})
@@ -29,15 +18,15 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</delete>
 	
 	<update id="update" parameterType="category">
-		UPDATE CATEGORY_TB SET NAME=#{category_name} WHERE CATEGORYID=#{category_id}
+		UPDATE CATEGORY_TB SET CATEGORYNAME=#{category_name} WHERE CATEGORYID=#{category_id}
 	</update>
 
 	<select id="select" parameterType="String" resultMap="categoryResult">
-		SELECT * FROM CATEGORY_TB WHERE CATEGORYID=#{obj} 
+		SELECT * FROM CATEGORY_TB WHERE CATEGORYID=#{obj}
 	</select>
 	
 	<select id="selectall" resultMap="categoryResult">
-		SELECT * FROM CATEGORY_TB, PRODUCT_TB WEHRE CATEGORY_TB.CATEGORYID=PRODUCT_TB.CATEGORYID ORDER BY CATEGORYID
+		SELECT * FROM CATEGORY_TB
 	</select>
 
 	

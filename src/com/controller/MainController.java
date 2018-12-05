@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.frame.Services;
+import com.vo.Category;
 import com.vo.Product;
 import com.vo.User;
 
@@ -25,8 +26,8 @@ public class MainController {
 	Services<String , User> services;
 	@Resource(name = "productservice")
 	Services<String , Product> product_services;
-	
-	
+	@Resource(name = "categoryservice")
+	Services<String , Category> categoryservices;
 	
 //	@RequestMapping("/main.mc")
 //	public String main() {
@@ -55,8 +56,12 @@ public class MainController {
 				String main_img = product.getImg();
 				int index = main_img.indexOf(",");
 //				System.out.println(index);
-				
-				front_main_img = main_img.substring(0, index);
+				if(index==-1) {
+					front_main_img = main_img;
+				}
+				else {
+					front_main_img = main_img.substring(0, index);	
+				}
 				front_main_img_list.add(front_main_img);
 			
 				
@@ -90,44 +95,12 @@ public class MainController {
 		return mv;
 	}
 	
-	ArrayList<String> lunch_box_img_list = new ArrayList<String>();
 	@RequestMapping("/lunch_box.mc")
 	public ModelAndView lunch_box() {
-		lunch_box_img_list.clear();
 		ModelAndView mv = new ModelAndView();
-		ArrayList<Product> lunch_box_list = null;
-		String lunch_box_img = null;
-		
-		
-		try {
-			mv.setViewName("main");
-			lunch_box_list = product_services.get();
-	
-			for(Product product : lunch_box_list) {
-				
-				String main_img = product.getImg();
-				int index = main_img.indexOf(",");
-//				System.out.println(index);
-				
-				lunch_box_img = main_img.substring(0, index);
-				lunch_box_img_list.add(lunch_box_img);
-	
-			}
-			
-			System.out.println(lunch_box_img_list);
-			
-			mv.addObject("lunch_box_list", lunch_box_list);
-			mv.addObject("lunch_box_img_list", lunch_box_img_list);
-			mv.addObject("center", "shop");
-			mv.addObject("product_center", "lunch_box");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			
-			
-		}
-		
-		
+		mv.setViewName("main");
+		mv.addObject("center", "shop");
+		mv.addObject("product_center", "lunch_box");
 		return mv;
 	}
 	
@@ -177,11 +150,81 @@ public class MainController {
 		return mv;
 	}
 	
+
+	ArrayList<String> select_product_img_list = new ArrayList<String>();
+	
 	@RequestMapping("/product_details.mc")
-	public ModelAndView product_details() {
+	public ModelAndView product_details(@RequestParam(value = "product_id") String product_id ) {
+		String select_product_mainimg_list=null;
+		select_product_img_list.clear();
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("main");
-		mv.addObject("center", "product_details");
+		Product select_product_list= null;
+		Category select_category=null;
+		try {
+			
+			select_product_list = product_services.get(product_id);
+			System.out.println(select_product_list);
+			
+			String getCategory_id = Integer.toString(select_product_list.getCategory_id());
+			System.out.println("getCategory_id: "+getCategory_id);
+			select_category = categoryservices.get(getCategory_id);
+			System.out.println(select_category);
+
+			
+			
+			String select_product_img = select_product_list.getImg();
+			
+			System.out.println(select_product_img);
+			String select_product_split_img = null;
+
+		
+			int index = select_product_img.indexOf(",");
+			
+			
+			
+			
+			if(index==-1) {
+				select_product_split_img = select_product_img;
+				select_product_img_list.add(select_product_split_img);
+				
+			}
+			else {
+				int temp=0;
+					
+				while(index >-1){
+				
+					select_product_split_img = select_product_img.substring(temp, index);
+					temp = index + 1;
+					index = select_product_img.indexOf(",", index + 1);
+					select_product_img_list.add(select_product_split_img);
+					
+					if (index < 0) {
+
+						index = select_product_img.length();
+						select_product_split_img = select_product_img.substring(temp, index);
+						
+						select_product_img_list.add(select_product_split_img);
+						break;
+					}
+						
+				}
+				
+			}
+			System.out.println(select_product_img_list);
+			select_product_mainimg_list = (select_product_img_list.get(0));
+			select_product_img_list.remove(0);
+			mv.setViewName("main");
+			mv.addObject("select_product_list", select_product_list);
+			mv.addObject("select_product_mainimg_list", select_product_mainimg_list);
+			mv.addObject("select_product_img_list", select_product_img_list);
+			mv.addObject("select_category", select_category);
+			mv.addObject("center", "product_details");
+		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		return mv;
 	}
 	
