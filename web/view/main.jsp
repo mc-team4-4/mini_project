@@ -132,8 +132,6 @@
 		            <nav class="amado-nav" style="margin-bottom: 30px">
 		                <ul>
 		                    <li><a href="main.mc">Home</a></li>
-		                    <li><a href="shop.mc">Shop</a></li>
-		                    <li><a href="product_details.mc">Product</a></li>
 		                </ul>
 		            </nav>
 		
@@ -168,8 +166,6 @@
 		            <nav class="amado-nav" style="margin-bottom: 50px" >
 		                <ul>
 		                    <li><a href="main.mc">Home</a></li>
-		                    <li><a href="shop.mc">Shop</a></li>
-		                    <li><a href="product_details.mc">Product</a></li>
 		                    <li><a href="cart.mc">Shopping Cart</a></li>
 		                    <li><a href="checkout.mc">Checkout</a></li>
 		                    <li><a href="user_detail.mc">User Detail</a></li>
@@ -178,7 +174,7 @@
 		
 		            <!-- Cart Menu -->
 		            <div class="cart-fav-search mb-50">
-		                <a href="cart.mc" class="cart-nav"><img src="img/core-img/cart.png" alt=""> Cart <span>(0)</span></a>
+		                <a href="cart.mc" class="cart-nav"><img src="img/core-img/cart.png" alt=""> Cart</a>
 		                <a href="#" class="fav-nav"><img src="img/core-img/favorites.png" alt=""> Favourite</a>
 		                <a href="#" class="search-nav"><img src="img/core-img/search.png" alt=""> Search</a>
 		            </div>	

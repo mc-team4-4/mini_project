@@ -48,7 +48,7 @@ public class MainController {
 		
 		
 		try {
-			mv.setViewName("main");
+			
 			p_list = product_services.get();
 	
 			for(Product product : p_list) {
@@ -70,14 +70,14 @@ public class MainController {
 			}
 			
 			System.out.println(front_main_img_list);
-			
+			mv.setViewName("main");
 			mv.addObject("p_list", p_list);
 			mv.addObject("front_main_img_list", front_main_img_list);
 			mv.addObject("center", "main_product");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			mv.addObject("center", "main_product_null");	
+		
 			
 		}
 
@@ -154,61 +154,59 @@ public class MainController {
 	ArrayList<String> select_product_img_list = new ArrayList<String>();
 	
 	@RequestMapping("/product_details.mc")
-	public ModelAndView product_details(@RequestParam(value = "product_id") String product_id ) {
-		String select_product_mainimg_list=null;
+	public ModelAndView product_details(@RequestParam(value = "product_id") String product_id,  HttpSession session, HttpServletResponse response) {
 		select_product_img_list.clear();
 		ModelAndView mv = new ModelAndView();
-		Product select_product_list= null;
-		Category select_category=null;
+
+		String email = (String) session.getAttribute("login_user_email");
+		System.out.println("product_details Seesion: "+ email);
+		
+		
+		String select_product_mainimg_list = null;
+		Product select_product_list = null;
+		Category select_category = null;
 		try {
-			
+
 			select_product_list = product_services.get(product_id);
 			System.out.println(select_product_list);
-			
+
 			String getCategory_id = Integer.toString(select_product_list.getCategory_id());
-			System.out.println("getCategory_id: "+getCategory_id);
+			System.out.println("getCategory_id: " + getCategory_id);
 			select_category = categoryservices.get(getCategory_id);
 			System.out.println(select_category);
 
-			
-			
 			String select_product_img = select_product_list.getImg();
-			
+
 			System.out.println(select_product_img);
 			String select_product_split_img = null;
 
-		
 			int index = select_product_img.indexOf(",");
-			
-			
-			
-			
-			if(index==-1) {
+
+			if (index == -1) {
 				select_product_split_img = select_product_img;
 				select_product_img_list.add(select_product_split_img);
-				
-			}
-			else {
-				int temp=0;
-					
-				while(index >-1){
-				
+
+			} else {
+				int temp = 0;
+
+				while (index > -1) {
+
 					select_product_split_img = select_product_img.substring(temp, index);
 					temp = index + 1;
 					index = select_product_img.indexOf(",", index + 1);
 					select_product_img_list.add(select_product_split_img);
-					
+
 					if (index < 0) {
 
 						index = select_product_img.length();
 						select_product_split_img = select_product_img.substring(temp, index);
-						
+
 						select_product_img_list.add(select_product_split_img);
 						break;
 					}
-						
+
 				}
-				
+
 			}
 			System.out.println(select_product_img_list);
 			select_product_mainimg_list = (select_product_img_list.get(0));
@@ -218,12 +216,15 @@ public class MainController {
 			mv.addObject("select_product_mainimg_list", select_product_mainimg_list);
 			mv.addObject("select_product_img_list", select_product_img_list);
 			mv.addObject("select_category", select_category);
+			mv.addObject("login_user_email", email);
 			mv.addObject("center", "product_details");
-		
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		
 
 		return mv;
 	}
@@ -246,13 +247,12 @@ public class MainController {
 			if(email.equals("admin@admin.com")) {
 				session.setAttribute("login_admin_email", dbuser.getEmail());
 				session.setAttribute("login_admin_name", dbuser.getName());
-				mv.setViewName("admin/admin_main");
-				
+				mv.setViewName("redirect:admin_main.mc");
 			}
 			else {
 				if(dbuser.getPassword().equals(password)) {
 					session.setAttribute("login_user_email", dbuser.getEmail());
-					mv.setViewName("main");
+					mv.setViewName("redirect:main.mc");
 				}else {
 					mv.setViewName("sign_in_fail");
 					response.setContentType("text/html; charset=UTF-8");
@@ -291,8 +291,8 @@ public class MainController {
 		if(session != null) {
 			session.invalidate();
 		}
-		
-		return "main";
+
+		return "redirect:main.mc";
 	}
 	
 	
