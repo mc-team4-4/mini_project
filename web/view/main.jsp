@@ -166,7 +166,7 @@
 		            <nav class="amado-nav" style="margin-bottom: 50px" >
 		                <ul>
 		                    <li><a href="main.mc">Home</a></li>
-		                    <li><a href="cart.mc">Shopping Cart</a></li>
+		                    <li><a href="cart.mc?">Shopping Cart</a></li>
 		                    <li><a href="checkout.mc">Checkout</a></li>
 		                    <li><a href="user_detail.mc">User Detail</a></li>
 		                </ul>

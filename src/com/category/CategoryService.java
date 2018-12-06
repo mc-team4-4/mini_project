@@ -51,4 +51,10 @@ public class CategoryService implements Services<String, Category> {
 		return dao.select();
 	}
 
+	@Override
+	public ArrayList<Category> get_list(String k) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.select_list(k);
+	}
+
 }

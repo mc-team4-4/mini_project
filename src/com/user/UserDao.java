@@ -39,6 +39,14 @@ public class UserDao implements Dao<String, User> {
 		return um.selectall();
 	}
 
+	@Override
+	public ArrayList<User> select_list(String k) {
+		// TODO Auto-generated method stub
+		return um.selectlist(k);
+	}
+	
+	
+
 	
 
 }

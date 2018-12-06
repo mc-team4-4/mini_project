@@ -41,6 +41,14 @@ public class ProductDao implements Dao<String, Product> {
 		return pm.selectall();
 	}
 
+	@Override
+	public ArrayList<Product> select_list(String k) {
+		// TODO Auto-generated method stub
+		return pm.selectlist(k);
+	}
+
+
+
 	
 
 }

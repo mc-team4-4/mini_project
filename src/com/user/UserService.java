@@ -49,4 +49,11 @@ public class UserService implements Services<String, User> {
 		return dao.select();
 	}
 
+	@Override
+	public ArrayList<User> get_list(String k) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.select_list(k);
+	}
+	
+
 }

@@ -1,4 +1,4 @@
-package com.product;
+package com.shoppingcart;
 
 import java.util.ArrayList;
 
@@ -9,11 +9,12 @@ import org.springframework.stereotype.Service;
 
 import com.frame.Dao;
 import com.frame.Services;
-import com.vo.Product;
+import com.vo.Shoppingcart;
 
-@Service("productservice")
-public class ProductService implements Services<String, Product> {
-	@Resource(name="productdao")
+
+@Service("shoppingcartservice")
+public class ShoppingcartService implements Services<String, Shoppingcart> {
+	@Resource(name="shoppingcartdao")
 	Dao dao;
 		
 	public Dao getDao() {
@@ -25,8 +26,9 @@ public class ProductService implements Services<String, Product> {
 	}
 
 	@Override
-	public void register(Product v) {
+	public void register(Shoppingcart v) {
 		dao.insert(v);
+		
 	}
 
 	@Override
@@ -35,24 +37,24 @@ public class ProductService implements Services<String, Product> {
 	}
 
 	@Override
-	public void modify(Product v) {
+	public void modify(Shoppingcart v) {
 		dao.update(v);
 	}
 
 	@Override
-	public Product get(String k) {
-		return (Product) dao.select(k);
+	public Shoppingcart get(String k) {
+		return (Shoppingcart) dao.select(k);
 	}
 
 	@Override
-	public ArrayList<Product> get() {
+	public ArrayList<Shoppingcart> get() {
 		return dao.select();
 	}
 
 	@Override
-	public ArrayList<Product> get_list(String k){
+	public ArrayList<Shoppingcart> get_list(String k) throws Exception {
 		// TODO Auto-generated method stub
-		return (ArrayList<Product>)dao.select_list(k);
+		return dao.select_list(k);
 	}
 
 }

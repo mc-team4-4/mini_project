@@ -60,19 +60,18 @@
 							<c:forEach var="img_item" items="${select_product_img_list}">
 
 								<div class="carousel-item">
-									<%if(count2==2){
-				                                        		al="Second slide";
-				                                        		
-				                                        	}
-				                                        	else if(count2==3){
-				                                        		al="Third slide";
-				                                        		
-				                                        	}
-				                                        	else if(count2==4){
-				                                        		al="Fourth slide";
-				                                        		
-				                                        	}
-				                                            %>
+									<%
+										if (count2 == 2) {
+												al = "Second slide";
+
+											} else if (count2 == 3) {
+												al = "Third slide";
+
+											} else if (count2 == 4) {
+												al = "Fourth slide";
+
+											}
+									%>
 									<a class="gallery_img" href="img/main_img/${img_item}"> <img
 										class="d-block w-100" src="img/main_img/${img_item}"
 										alt="<%=al%>"> <%count2++; %>
@@ -89,7 +88,7 @@
 					<!-- Product Meta Data -->
 					<div class="product-meta-data">
 						<div class="line"></div>
-						<p class="product-price">${select_product_list.price}</p>
+						<p class="product-price">${select_product_list.price}¿ø</p>
 						<a href="product_details.mc">
 							<h6>${select_product_list.name}</h6>
 						</a>
@@ -116,29 +115,25 @@
 
 
 		        	<c:choose>
-						<c:when test="${login_user_email == null }">
-		
-						</c:when>
-						<c:otherwise>
+						<c:when test="${login_user_email != null }">
 							<!-- Add to Cart Form -->
-							<form class="cart clearfix" method="post">
+							<form class="cart clearfix" action="shoppingcart.mc" method="post">
+								<input type="hidden" name="email" value="${login_user_email}">
+								<input type="hidden" name="product_id" value="${select_product_list.product_id}">
 								<div class="cart-btn d-flex mb-50">
 									<p>Qty</p>
 									<div class="quantity">
-										<span class="qty-minus"
-											onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i
-											class="fa fa-caret-down" aria-hidden="true"></i></span> <input
-											type="number" class="qty-text" id="qty" step="1" min="1"
-											max="300" name="quantity" value="1"> <span
-											class="qty-plus"
-											onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i
-											class="fa fa-caret-up" aria-hidden="true"></i></span>
+										<span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;">
+										<i class="fa fa-caret-down" aria-hidden="true"></i></span> 
+										<input type="number" class="qty-text" id="qty" step="1" min="1" max="300" name="amount" value="1"> 
+										<span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;">
+										<i class="fa fa-caret-up" aria-hidden="true"></i></span>
 									</div>
 								</div>
-								<button type="submit" name="addtocart" value="5"
-									class="btn amado-btn">Add to cart</button>
+								
+								<button type="submit" name="addtocart" class="btn amado-btn">Add to cart</button>
 							</form>
-						</c:otherwise>
+						</c:when>
 					</c:choose>
 			
 

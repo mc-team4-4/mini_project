@@ -11,6 +11,7 @@ public interface CategoryMapper {
 	public void update(Category obj);
 	public Object select(String obj);
 	public ArrayList<Category> selectall();
+	public ArrayList<Category> selectlist(String obj);
 }
 
 

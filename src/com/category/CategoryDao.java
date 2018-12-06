@@ -42,6 +42,13 @@ public class CategoryDao implements Dao<String, Category> {
 		return ctm.selectall();
 	}
 
+	@Override
+	public ArrayList<Category> select_list(String k) {
+		// TODO Auto-generated method stub
+		return ctm.selectlist(k);
+	}
+
+	
 	
 
 }

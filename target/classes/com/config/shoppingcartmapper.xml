@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.ShoppingcartMapper">
+
+	<resultMap type="shoppingcart" id="shoppingcartResult">
+		<result column="CARTID" property="cart_id"/>
+		<result column="USERID" property="email"/>
+		<result column="PRODUCTID" property="product_id"/>
+		<result column="AMOUNT" property="amount"/>
+	</resultMap>		
+	
+	<insert id="insert" parameterType="shoppingcart">
+		INSERT INTO SHOPPINGCART_TB VALUES (SHOPPINGCART_SEQ.NEXTVAL,#{email},#{product_id},#{amount})
+	</insert>
+
+	<delete id="delete" parameterType="String">
+		DELETE FROM SHOPPINGCART_TB WHERE CARTID=#{obj}
+	</delete>
+	
+	<update id="update" parameterType="shoppingcart">
+		UPDATE SHOPPINGCART_TB SET AMOUNT=#{amount} WHERE CARTID=#{cart_id}
+	</update>
+
+	<select id="select" parameterType="String" resultMap="shoppingcartResult">
+		SELECT * FROM SHOPPINGCART_TB WHERE USERID=#{obj}
+	</select>
+	
+	<select id="selectall" resultMap="shoppingcartResult">
+		SELECT * FROM SHOPPINGCART_TB ORDER BY CARTID
+	</select>
+	
+	<select id="selectlist" resultMap="shoppingcartResult">
+		SELECT * FROM SHOPPINGCART_TB WHERE USERID=#{obj} ORDER BY CARTID
+	</select>
+
+	
+</mapper>
+
+
+
+
+
+

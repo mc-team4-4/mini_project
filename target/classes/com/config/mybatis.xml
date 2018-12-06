@@ -7,12 +7,14 @@ PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
 		<typeAlias type="com.vo.User" alias="user"/>
 		<typeAlias type="com.vo.Product" alias="product"/>
 		<typeAlias type="com.vo.Category" alias="category"/>
+		<typeAlias type="com.vo.Shoppingcart" alias="shoppingcart"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="com/config/usermapper.xml"/>
 		<mapper resource="com/config/productmapper.xml"/>
 		<mapper resource="com/config/categorymapper.xml"/>
+		<mapper resource="com/config/shoppingcartmapper.xml"/>
 	</mappers>
 </configuration>
 

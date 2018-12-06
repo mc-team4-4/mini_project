@@ -10,7 +10,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.frame.Services;
@@ -20,7 +19,7 @@ import com.vo.User;
 public class UserController {
 
 	@Resource(name = "userservice")
-	Services<String , User> services;
+	Services<String , User> user_services;
 	
 	@RequestMapping("/user_detail.mc")
 	public ModelAndView user_detail(HttpSession session) {
@@ -31,7 +30,7 @@ public class UserController {
 		System.out.println("Seesion: "+ email);
 		
 		try {
-			dbuser = services.get(email);
+			dbuser = user_services.get(email);
 			session.setAttribute("user_email", dbuser.getEmail());
 			session.setAttribute("user_password", dbuser.getPassword());
 			session.setAttribute("user_name", dbuser.getName());
@@ -62,7 +61,7 @@ public class UserController {
 
 		try {
 			if(user.getPassword().equals(user.getPassword_confirm()) && user.getPassword().equals(user.getPassword_current())) {
-				services.modify(user);
+				user_services.modify(user);
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter out = response.getWriter();
 				out.println("<script>alert('Modify Complete!');</script>");
@@ -79,7 +78,7 @@ public class UserController {
 				
 			}
 			else if(user.getPassword().equals(user.getPassword_confirm()) && !user.getPassword().equals(user.getPassword_current())) {
-				services.modify(user);
+				user_services.modify(user);
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter out = response.getWriter();
 				out.println("<script>alert('Modify Complete! Please Resign in');</script>");
@@ -132,7 +131,7 @@ public class UserController {
 		System.out.println("Withdrawal E-mail: "+ email);
 		
 		try {
-			services.remove(email);
+			user_services.remove(email);
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>alert('Withdrawal Complete!');</script>");

@@ -10,6 +10,7 @@ public interface UserMapper {
 	public void update(User obj);
 	public Object select(String obj);
 	public ArrayList<User> selectall();
+	public ArrayList<User> selectlist(String obj);
 }
 
 

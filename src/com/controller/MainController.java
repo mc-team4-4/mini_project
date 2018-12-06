@@ -15,27 +15,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.frame.Services;
-import com.vo.Category;
 import com.vo.Product;
+import com.vo.Shoppingcart;
 import com.vo.User;
 
 @Controller
 public class MainController {
 
 	@Resource(name = "userservice")
-	Services<String , User> services;
+	Services<String , User> user_services;
 	@Resource(name = "productservice")
 	Services<String , Product> product_services;
-	@Resource(name = "categoryservice")
-	Services<String , Category> categoryservices;
-	
-//	@RequestMapping("/main.mc")
-//	public String main() {
-//
-//		return "main";
-//	
-//	}
-
+	@Resource(name = "shoppingcartservice")
+	Services<String , Shoppingcart> shoppingcart_services;
 
 	ArrayList<String> front_main_img_list = new ArrayList<String>();
 	@RequestMapping("/main.mc")
@@ -132,14 +124,75 @@ public class MainController {
 	}
 	
 	
+	ArrayList<Product> db_product_list = new ArrayList<>();
+	ArrayList<String> cart_img_list = new ArrayList<>();
+	ArrayList<Shoppingcart> db_shoppingcart = null;
+	
 	@RequestMapping("/cart.mc")
-	public ModelAndView cart() {
+	public ModelAndView cart(HttpServletRequest request, HttpSession session) {
+		db_product_list.clear();
+		cart_img_list.clear();
+		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("main");
-		mv.addObject("center", "cart");
+		
+		String email = (String) session.getAttribute("login_user_email");
+		System.out.println("cart_email: "+email);
+		
+		
+		Product dbproduct = null;
+		String select_cartimg = null;
+		String select_split_img = null;
+		
+		int price=0;
+		int amount=0;
+		int total=0;
+		try {
+			db_shoppingcart = shoppingcart_services.get_list(email);
+			
+			for(Shoppingcart shoppingcart: db_shoppingcart) {
+				int product_id = shoppingcart.getProduct_id();
+				
+				dbproduct = product_services.get(""+product_id);
+				
+				select_cartimg = dbproduct.getImg();
+				int index = select_cartimg.indexOf(",");
+
+				if (index == -1) {
+					select_split_img = select_cartimg;
+					cart_img_list.add(select_split_img);
+
+				} else {
+					select_split_img = select_cartimg.substring(0, index);
+					cart_img_list.add(select_split_img);
+					
+				}
+			
+				db_product_list.add(dbproduct);
+				
+				price = dbproduct.getPrice();
+				amount = shoppingcart.getAmount();
+				total += price* amount;
+			}
+			
+			System.out.println("total: " + total);
+			System.out.println(db_shoppingcart);
+			System.out.println(db_product_list);
+			
+			mv.setViewName("main");
+			mv.addObject("db_shoppingcart", db_shoppingcart);
+			mv.addObject("db_product_list", db_product_list);
+			mv.addObject("cart_img_list", cart_img_list);
+			mv.addObject("total", Integer.toString(total));
+			mv.addObject("center", "cart");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+
 		return mv;
 	}
-	
 	
 
 	@RequestMapping("/checkout.mc")
@@ -151,83 +204,7 @@ public class MainController {
 	}
 	
 
-	ArrayList<String> select_product_img_list = new ArrayList<String>();
-	
-	@RequestMapping("/product_details.mc")
-	public ModelAndView product_details(@RequestParam(value = "product_id") String product_id,  HttpSession session, HttpServletResponse response) {
-		select_product_img_list.clear();
-		ModelAndView mv = new ModelAndView();
 
-		String email = (String) session.getAttribute("login_user_email");
-		System.out.println("product_details Seesion: "+ email);
-		
-		
-		String select_product_mainimg_list = null;
-		Product select_product_list = null;
-		Category select_category = null;
-		try {
-
-			select_product_list = product_services.get(product_id);
-			System.out.println(select_product_list);
-
-			String getCategory_id = Integer.toString(select_product_list.getCategory_id());
-			System.out.println("getCategory_id: " + getCategory_id);
-			select_category = categoryservices.get(getCategory_id);
-			System.out.println(select_category);
-
-			String select_product_img = select_product_list.getImg();
-
-			System.out.println(select_product_img);
-			String select_product_split_img = null;
-
-			int index = select_product_img.indexOf(",");
-
-			if (index == -1) {
-				select_product_split_img = select_product_img;
-				select_product_img_list.add(select_product_split_img);
-
-			} else {
-				int temp = 0;
-
-				while (index > -1) {
-
-					select_product_split_img = select_product_img.substring(temp, index);
-					temp = index + 1;
-					index = select_product_img.indexOf(",", index + 1);
-					select_product_img_list.add(select_product_split_img);
-
-					if (index < 0) {
-
-						index = select_product_img.length();
-						select_product_split_img = select_product_img.substring(temp, index);
-
-						select_product_img_list.add(select_product_split_img);
-						break;
-					}
-
-				}
-
-			}
-			System.out.println(select_product_img_list);
-			select_product_mainimg_list = (select_product_img_list.get(0));
-			select_product_img_list.remove(0);
-			mv.setViewName("main");
-			mv.addObject("select_product_list", select_product_list);
-			mv.addObject("select_product_mainimg_list", select_product_mainimg_list);
-			mv.addObject("select_product_img_list", select_product_img_list);
-			mv.addObject("select_category", select_category);
-			mv.addObject("login_user_email", email);
-			mv.addObject("center", "product_details");
-
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-
-		return mv;
-	}
 	
 	@RequestMapping("/sign_in.mc")
 	public ModelAndView sign_in() {
@@ -242,7 +219,7 @@ public class MainController {
 		User dbuser = null;
 		
 		try {
-			dbuser = services.get(email);
+			dbuser = user_services.get(email);
 			
 			if(email.equals("admin@admin.com")) {
 				session.setAttribute("login_admin_email", dbuser.getEmail());
@@ -310,7 +287,7 @@ public class MainController {
 		try {
 
 			if (user.getPassword().equals(user.getPassword_confirm())) {
-				services.register(user);
+				user_services.register(user);
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter out = response.getWriter();
 				out.println("<script>alert('Sign up Complete!');</script>");

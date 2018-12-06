@@ -23,7 +23,7 @@
 		                    	<!-- Hover Content -->
 		                        <div class="hover-content">
 		                            <div class="line"></div>
-		                            <p>${img_item.price}</p>
+		                            <p>${img_item.price}¿ø</p>
 		                            <h4>${img_item.name}</h4>
 		                        </div> 
 	 						
